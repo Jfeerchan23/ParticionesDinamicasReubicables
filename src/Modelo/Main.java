@@ -38,6 +38,9 @@ public class Main {
             break;
             case 3:
                 //Implementar primer ajuste FERNANDO
+                
+                
+                
             break;
         }
         

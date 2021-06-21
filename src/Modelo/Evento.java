@@ -11,22 +11,22 @@ package Modelo;
  */
 public class Evento {
     
-    private String nom;
+    private String tipo;
     private String proceso;
     private int tam;
 
-    public Evento(String nom, String proceso, int tam) {
-        this.nom = nom;
+    public Evento(String tipo, String proceso, int tam) {
+        this.tipo = tipo;
         this.proceso = proceso;
         this.tam = tam;
     }
 
-    public String getNom() {
-        return nom;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getProceso() {
@@ -47,8 +47,10 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "Evento{" + "nom=" + nom + ", proceso=" + proceso + ", tam=" + tam + '}';
+        return "Evento{" + "tipo=" + tipo + ", proceso=" + proceso + ", tam=" + tam + '}';
     }
+
+   
     
     
     
