@@ -131,7 +131,7 @@ public class PrimerAjuste {
     private static void reubicacion(Evento evento){
 
         
-     
+           
         while(Libre.get(0).getTam()<evento.getTam() && Libre.size()!=1){
             int i=0;
             
@@ -147,7 +147,7 @@ public class PrimerAjuste {
         i++;
         }
         
-        if(evento.getTam()>=Libre.get(0).getTam()){
+        if(evento.getTam()<=Libre.get(0).getTam()){
            recorrerProcesos();
            llegada(evento);
         }else{
@@ -195,6 +195,8 @@ public class PrimerAjuste {
               break;
           }
         }
+        
+      
     }
     
     
