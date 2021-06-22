@@ -43,15 +43,19 @@ public class PrimerAjuste {
            if("Llega".equals(Eventos.get(i).getTipo())){
                llegada(Eventos.get(i));
            }else{
+               if("Termina".equals(Eventos.get(i).getTipo()))
                finalizado(Eventos.get(i));
            }
+          
             
         }
-       
+        System.out.println("\nPROCESOS ACTIVOS\n");
         imprimirArray(Particiones);
-         System.out.println("\n------------------\n");
+         System.out.println("\nPROCESOS FINALIZADOS\n");
         imprimirArray(Finalizados);
-        System.out.println("\n------------------\n");
+        System.out.println("\nPROCESOS EN ESPERA\n");
+         imprimirArray(Espera);
+        System.out.println("\nAREAS LIBRES\n");
         imprimirArray(Libre);
        
     }
@@ -89,8 +93,11 @@ public class PrimerAjuste {
                 nLib++;
             }
         } 
-        
-       procesosEspera();
+       
+        if(!Espera.isEmpty()){
+        procesosEspera();
+        }
+       
         
     }
     
@@ -117,6 +124,11 @@ public class PrimerAjuste {
                }
            }
            
+           for(int i=0;i<Libre.size();i++){
+               if(Libre.get(i).getTam()==0){
+                   Libre.remove(i);
+               }
+           }
                 
            for(int i=0;i<Libre.size();i++){
                Libre.get(i).setOrden(i+1);
@@ -125,11 +137,17 @@ public class PrimerAjuste {
            
     }
     
-    //COMPONER REUBICACIÓN
+  
     private static void reubicacion(Evento evento){
-
+           int cantidad=0;
         
-           
+           for(int i=0;i<Libre.size();i++){
+               cantidad=cantidad+Libre.get(i).getTam();
+           }
+               
+               
+         if(cantidad>=evento.getTam()){
+             
         while(Libre.get(0).getTam()<evento.getTam() && Libre.size()!=1){
             int i=0;
             
@@ -144,21 +162,19 @@ public class PrimerAjuste {
         
         i++;
         }
-        
-        if(evento.getTam()<=Libre.get(0).getTam()){
            recorrerProcesos();
            llegada(evento);
-        }else{
-             Espera.add(evento);
-        }
-        
-        
-   
-        
+         }else{
+              
+             
+               Espera.add(evento);
+         }
+  
         
     }
     
-  
+    
+    
     private static void ordenarTP(){
           Collections.sort(Particiones, new Comparator<TP>() {
 
@@ -169,20 +185,43 @@ public class PrimerAjuste {
     }
     
     private static void procesosEspera(){
-        
-   
-        for(int i=0;i<Espera.size();i++){
-            for(int j=0;j<Libre.size();j++){
-            if(Espera.get(i).getTam()<=Libre.get(j).getTam()){
-                llegada(Espera.get(i));
-                Espera.remove(i);
-            }
-        }
-            
-        }
+        int cantidad=0;
+        boolean x=false;
+      for(int i=0;i<Libre.size();i++){
+          cantidad=cantidad+Libre.get(i).getTam();
+      }
+      
+      for(int i=0;i<Espera.size();i++){
+          
+          for(int j=0;j<Libre.size();j++){
+         if(Espera.get(i).getTam()<=Libre.get(j).getTam()){
+             
+             llegada(Espera.get(i));
+             Espera.remove(i);
+             x=true;
+             break;
+         }
+              
+              
+          }
+          try{
+          if(cantidad>Espera.get(i).getTam()&&x==false){
+              reubicacion(Espera.get(i));
+              Espera.remove(i);
+          }}catch(Exception e){
+              
+          }
+          
+          
+         
+      }  
+      
+      
+      
         
     }
-     
+    
+    
     private static void recorrerProcesos(){
          Particiones.get(0).setLoc(nSO);
         for(int i=0;i<Particiones.size()-1;i++){
