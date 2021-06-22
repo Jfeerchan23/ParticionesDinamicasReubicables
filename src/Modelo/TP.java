@@ -28,7 +28,7 @@ public class TP extends Tabla{
 
     @Override
     public String toString() {
-        return "TP{" + "asign=" + asign + '}';
+        return super.toString()+", asign=" + asign ;
     }
     
     

@@ -17,13 +17,27 @@ public class TAL extends Tabla{
         this.orden = orden;
     }
 
-   
+    public int getOrden() {
+        return orden;
+    }
 
+    public void setOrden(int orden) {
+        this.orden = orden;
+    }
+
+    
+    
+    
+    
+    
     @Override
     public String toString() {
-        return "TAL{" + "orden=" + orden + '}';
+        return super.toString() + ", orden=" + orden ;
     }
-    
+
+   
+
+  
     
     
     

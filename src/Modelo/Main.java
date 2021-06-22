@@ -6,6 +6,8 @@
 package Modelo;
 
 import java.util.Scanner;
+import Modelo.PrimerAjuste.*;
+import static Modelo.PrimerAjuste.dinamicaPrimerAjuste;
 
 /**
  *
@@ -23,9 +25,9 @@ public class Main {
         int memoria =0, so=0,modalidad=0;
         Scanner scanner=new Scanner(System.in);
         System.out.println("\nIntroduzca el tamaño total de la memoria\n");
-        memoria=scanner.nextInt();
+       // memoria=scanner.nextInt();
         System.out.println("\nIntroduzca el tamaño ocupado por el SO\n");
-        so=scanner.nextInt();
+      //  so=scanner.nextInt();
         System.out.println("\nIntroduzca la modalidad: \n");
         System.out.println("\n1.-.Mejor ajuste\n2.-Peor ajuste\n3.-Primer ajuste\n");
         modalidad=scanner.nextInt();
@@ -38,7 +40,7 @@ public class Main {
             break;
             case 3:
                 //Implementar primer ajuste FERNANDO
-                
+            dinamicaPrimerAjuste(1024,128);
                 
                 
             break;
@@ -47,5 +49,7 @@ public class Main {
         
         
     }
+
+  
     
 }

@@ -58,7 +58,7 @@ public class Tabla {
 
     @Override
     public String toString() {
-        return "Tabla{" + "no=" + no + ", tam=" + tam + ", loc=" + loc + ", estado=" + estado + '}';
+        return "no=" + no + ", tam=" + tam + ", loc=" + loc + ", estado=" + estado ;
     }
     
 }
