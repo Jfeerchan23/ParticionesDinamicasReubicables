@@ -41,10 +41,8 @@ public class PrimerAjuste {
         for(int i=0; i<Eventos.size();i++){
           
            if("Llega".equals(Eventos.get(i).getTipo())){
-           //    System.out.println("\n\nEvento "+Eventos.get(i).getProceso()+" llega");
                llegada(Eventos.get(i));
            }else{
-             //   System.out.println("Evento termina\n");
                finalizado(Eventos.get(i));
            }
             
@@ -160,8 +158,7 @@ public class PrimerAjuste {
         
     }
     
-    
-    
+  
     private static void ordenarTP(){
           Collections.sort(Particiones, new Comparator<TP>() {
 
@@ -185,8 +182,7 @@ public class PrimerAjuste {
         }
         
     }
-    
-    
+     
     private static void recorrerProcesos(){
          Particiones.get(0).setLoc(nSO);
         for(int i=0;i<Particiones.size()-1;i++){
