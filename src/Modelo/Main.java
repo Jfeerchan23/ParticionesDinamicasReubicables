@@ -40,7 +40,7 @@ public class Main {
             break;
             case 3:
                 //Implementar primer ajuste FERNANDO
-            dinamicaPrimerAjuste(1024,128);
+            dinamicaPrimerAjuste(600,128);
                 
                 
             break;
