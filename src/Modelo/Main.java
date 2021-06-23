@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import static Modelo.MejorAjuste.dinamicaMejorAjuste;
+import static Modelo.PeorAjuste.dinamicaPeorAjuste;
 import Modelo.PrimerAjuste.*;
 
 import java.util.Scanner;
@@ -35,16 +37,15 @@ public class Main {
         switch (modalidad) {
             case 1:
                 //Implementar mejor ajuste  YAO
-                int[] tamBloque = {100, 500, 200, 300, 600};
-                int[] tamProceso = {212, 417, 112, 426};
-                MejorAjuste.mejorAdjuste(tamBloque, tamProceso);
+                dinamicaMejorAjuste(1024,128);
                 break;
             case 2:
                 //Implementar peor ajuste DANIEL
+                dinamicaPeorAjuste(1024,128);
                 break;
             case 3:
                 //Implementar primer ajuste FERNANDO
-                dinamicaPrimerAjuste(600, 128);
+                dinamicaPrimerAjuste(1024, 128);
 
 
                 break;

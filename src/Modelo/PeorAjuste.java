@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class MejorAjuste {
+public class PeorAjuste {
     static ArrayList<Evento> Eventos = new ArrayList();
     static ArrayList<Evento> Espera = new ArrayList();
     static ArrayList<TAL> Libre=new ArrayList();
@@ -31,7 +31,7 @@ public class MejorAjuste {
         Eventos.add(new Evento("Llega","P9",28));
     }
     
-    public static void dinamicaMejorAjuste(int ram, int so){
+    public static void dinamicaPeorAjuste(int ram, int so){
         inicializarEventos();
         //RAM 1024 MB
         //SO 128 MB
@@ -127,7 +127,7 @@ public class MejorAjuste {
             Collections.sort(Libre, new Comparator<TAL>() {
 
             public int compare(TAL p1, TAL p2) {
-                return new Integer(p1.getTam()).compareTo(new Integer(p2.getTam()));
+                return new Integer(p2.getTam()).compareTo(new Integer(p1.getTam()));
             }
         });
            
