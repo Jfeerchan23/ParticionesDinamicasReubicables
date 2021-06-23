@@ -17,7 +17,7 @@ public class Ajuste {
      static ArrayList<Evento> Eventos = new ArrayList();
     static ArrayList<Evento> Espera = new ArrayList();
     static ArrayList<TAL> Libre=new ArrayList();
-    static ArrayList<TP> Particiones = new ArrayList();
+    static ArrayList<TP> Activos = new ArrayList();
     static ArrayList<TP> Finalizados = new ArrayList();
    static int nPar=1;
    static int nLib=1;
@@ -58,7 +58,7 @@ public class Ajuste {
                finalizado(Eventos.get(i));
            }}
            System.out.println("\nProcesos activos:\n");
-        imprimirArray(Particiones);
+        imprimirArray(Activos);
          System.out.println("\nProcesos finalizados:\n");
         imprimirArray(Finalizados);
         System.out.println("\nProcesos en espera:\n");
@@ -75,7 +75,7 @@ public class Ajuste {
         boolean x=false;
         for(int i=0;i<Libre.size();i++){
             if(evento.getTam()<=Libre.get(i).getTam()){
-                Particiones.add(new TP(nPar,evento.getTam(),Libre.get(i).getLoc(),"A",evento.getProceso()));
+                Activos.add(new TP(nPar,evento.getTam(),Libre.get(i).getLoc(),"A",evento.getProceso()));
             //    System.out.println("Hay espacio para el proceso\n");
                 Libre.get(i).setTam(Libre.get(i).getTam()-evento.getTam());
                 Libre.get(i).setLoc(Libre.get(i).getLoc()+evento.getTam());
@@ -94,13 +94,13 @@ public class Ajuste {
         
     }
     private static void finalizado(Evento evento){
-        for(int i=0; i<Particiones.size();i++){
-            if(evento.getProceso().equals(Particiones.get(i).getAsign())){
-                Particiones.get(i).setEstado("V");
-                Libre.add(new TAL(nLib,Particiones.get(i).getTam(),Particiones.get(i).getLoc(),"D",nLib));
+        for(int i=0; i<Activos.size();i++){
+            if(evento.getProceso().equals(Activos.get(i).getAsign())){
+                Activos.get(i).setEstado("V");
+                Libre.add(new TAL(nLib,Activos.get(i).getTam(),Activos.get(i).getLoc(),"D",nLib));
                 ordenarTAL();
-                Finalizados.add(Particiones.get(i));
-                Particiones.remove(i);
+                Finalizados.add(Activos.get(i));
+                Activos.remove(i);
                 nLib++;
             }
         } 
@@ -186,7 +186,7 @@ public class Ajuste {
       
     
     private static void ordenarTP(){
-          Collections.sort(Particiones, new Comparator<TP>() {
+          Collections.sort(Activos, new Comparator<TP>() {
 
             public int compare(TP p1, TP p2) {
                 return new Integer(p1.getLoc()).compareTo(new Integer(p2.getLoc()));
@@ -233,10 +233,10 @@ public class Ajuste {
     
     
     private static void recorrerProcesos(){
-         Particiones.get(0).setLoc(nSO);
-        for(int i=0;i<Particiones.size()-1;i++){
-           Particiones.get(i+1).setLoc(Particiones.get(i).getLoc()+Particiones.get(i).getTam());
-          if((Particiones.get(i+1).getLoc()+Particiones.get(i+1).getTam())==Libre.get(0).getLoc()){
+         Activos.get(0).setLoc(nSO);
+        for(int i=0;i<Activos.size()-1;i++){
+           Activos.get(i+1).setLoc(Activos.get(i).getLoc()+Activos.get(i).getTam());
+          if((Activos.get(i+1).getLoc()+Activos.get(i+1).getTam())==Libre.get(0).getLoc()){
               break;
           }
         }
