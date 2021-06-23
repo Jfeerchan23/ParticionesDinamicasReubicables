@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        int memoria = 0, so = 0, modalidad = 0;
+        int ram = 0, so = 0, modalidad = 0;
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nIntroduzca el tamaño total de la memoria\n");
         // memoria=scanner.nextInt();
@@ -36,21 +36,21 @@ public class Main {
             //RAM=1024 
             //SO=128 
             case 1:
-               
+               // MejorAjuste.particionesReubicables(ram, so);
                MejorAjuste.particionesReubicables(1024, 128);
                 break;
             case 2:
-                
+                // PeorAjuste.particionesReubicables(ram, so);
               PeorAjuste.particionesReubicables(1024, 128);
                 break;
             case 3:
-               
+               // PrimerAjuste.particionesReubicables(ram, so);
               PrimerAjuste.particionesReubicables(1024, 128);
-
-
                 break;
+                
+               
         }
-
+        System.out.println("\nPROGRAMA FINALIZADO\n");
 
     }
 
