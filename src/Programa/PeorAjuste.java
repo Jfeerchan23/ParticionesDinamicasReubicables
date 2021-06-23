@@ -1,13 +1,12 @@
 
-package Clases;
+package Programa;
 
 import java.util.Collections;
 import java.util.Comparator;
 
 
-
-public class MejorAjuste extends Ajuste {
-     private static void ordenarTAL(){
+public class PeorAjuste extends Ajuste{
+    private static void ordenarTAL(){
            Collections.sort(Libre, new Comparator<TAL>() {
 
             public int compare(TAL p1, TAL p2) {
@@ -27,7 +26,7 @@ public class MejorAjuste extends Ajuste {
             Collections.sort(Libre, new Comparator<TAL>() {
 
             public int compare(TAL p1, TAL p2) {
-                return new Integer(p1.getTam()).compareTo(new Integer(p2.getTam()));
+                return new Integer(p2.getTam()).compareTo(new Integer(p1.getTam()));
             }
         });
            
