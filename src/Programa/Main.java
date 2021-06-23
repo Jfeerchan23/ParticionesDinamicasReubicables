@@ -32,16 +32,19 @@ public class Main {
         System.out.println("\n1.-.Mejor ajuste\n2.-Peor ajuste\n3.-Primer ajuste\n");
         modalidad = scanner.nextInt();
         switch (modalidad) {
+            //Tomando como ejemplo estos valores:
+            //RAM=1024 
+            //SO=128 
             case 1:
-                //Implementar mejor ajuste  YAO
+               
                MejorAjuste.particionesReubicables(1024, 128);
                 break;
             case 2:
-                //Implementar peor ajuste DANIEL
+                
               PeorAjuste.particionesReubicables(1024, 128);
                 break;
             case 3:
-                //Implementar primer ajuste FERNANDO
+               
               PrimerAjuste.particionesReubicables(1024, 128);
 
 
