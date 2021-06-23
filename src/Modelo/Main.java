@@ -5,13 +5,10 @@
  */
 package Modelo;
 
-import static Modelo.MejorAjuste.dinamicaMejorAjuste;
-import static Modelo.PeorAjuste.dinamicaPeorAjuste;
-import Modelo.PrimerAjuste.*;
+
 
 import java.util.Scanner;
 
-import static Modelo.PrimerAjuste.dinamicaPrimerAjuste;
 
 /**
  * @author fer_c
@@ -37,15 +34,15 @@ public class Main {
         switch (modalidad) {
             case 1:
                 //Implementar mejor ajuste  YAO
-                dinamicaMejorAjuste(1024,128);
+               MejorAjuste.particionesReubicables(1024, 128);
                 break;
             case 2:
                 //Implementar peor ajuste DANIEL
-                dinamicaPeorAjuste(1024,128);
+              PeorAjuste.particionesReubicables(1024, 128);
                 break;
             case 3:
                 //Implementar primer ajuste FERNANDO
-                dinamicaPrimerAjuste(1024, 128);
+              PrimerAjuste.particionesReubicables(1024, 128);
 
 
                 break;
